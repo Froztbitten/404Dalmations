@@ -16,6 +16,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void navMenu(View view){
-        startActivity(new Intent(this, NavMenu.class));
+
     }
 }
