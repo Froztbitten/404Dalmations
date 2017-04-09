@@ -2,6 +2,7 @@ package com.a404dalmations.superstudentscheduler;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -65,7 +66,7 @@ public class FinancialStart extends Activity {
             editor.putString("Person", json);
             editor.apply();
 
-
+            startActivity(new Intent(this, Financial.class));
         }
     }
 
