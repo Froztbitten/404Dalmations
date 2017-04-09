@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -41,7 +42,7 @@ public class AddTaskActivity extends AppCompatActivity
             Spinner sItems = (Spinner) findViewById(R.id.courseSpinner);
             sItems.setAdapter(adapter);
         }
-            public void addTask() {
+            public void addTask(View view) {
                 SharedPreferences sharedPref = getSharedPreferences("name", Context.MODE_PRIVATE);
                 Gson gson = new Gson();
 
