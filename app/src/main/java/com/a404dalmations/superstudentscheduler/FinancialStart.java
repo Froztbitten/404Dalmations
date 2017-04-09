@@ -21,8 +21,6 @@ public class FinancialStart extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.financial_menu);
 
-        //--- text view---
-        setTitle("Can I get Some Information?");
     }
 
     public void financialStatement(View view){
