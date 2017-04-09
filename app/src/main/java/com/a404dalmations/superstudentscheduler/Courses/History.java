@@ -63,7 +63,7 @@ public class History
     }
     public void addSemester(Semester semester)
     {
-        semesterCount++;
+        semesterCount+=1;
 
         this.semesters.add(semester);
     }

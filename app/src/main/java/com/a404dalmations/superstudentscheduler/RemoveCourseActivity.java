@@ -1,17 +1,13 @@
 package com.a404dalmations.superstudentscheduler;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
-
 import com.a404dalmations.superstudentscheduler.Courses.History;
 import com.a404dalmations.superstudentscheduler.Courses.ScheduleActivity;
 import com.google.gson.Gson;
@@ -26,9 +22,6 @@ public class RemoveCourseActivity extends AppCompatActivity{
     {
         super.onCreate(savedInstanceState); // Not sure if this should be here or not but whatevs.
 
-        /** This stuff will probably have to be updated to get and update the information correctly
-            in the Json. **/
-
         setContentView(R.layout.remove_course);
 
         SharedPreferences sharedPref = getSharedPreferences("name", Context.MODE_PRIVATE);
@@ -38,11 +31,12 @@ public class RemoveCourseActivity extends AppCompatActivity{
         Person person = gson.fromJson(json, Person.class);
         History history = person.getHistory();
 
-        //int count = history.getSemesterCount();
-        int count = 1;
+        int count = history.getSemesterCount();
+
         ArrayList<Integer> nums = new ArrayList<>();
-        for(int i = 1; i <= count; i++)
-            nums.add(i);
+
+        for(int i = 0; i < count; i++)
+            nums.add(i + 1);
 
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nums);
 
