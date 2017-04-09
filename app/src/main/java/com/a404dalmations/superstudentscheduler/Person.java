@@ -13,11 +13,23 @@ public class Person
     private String name;
     private History hist;
     private Finances finances;
+    private ArrayList<Task> tasks;
 
     public Person(String name){
         this.name = name;
         this.hist = new History();
         this.finances = new Finances();
+        this.tasks = new ArrayList<>();
+    }
+
+    public void addTask(Task task)
+    {
+        this.tasks.add(task);
+    }
+
+    public ArrayList<Task> getTasks()
+    {
+        return this.tasks;
     }
 
     public String getName(){
