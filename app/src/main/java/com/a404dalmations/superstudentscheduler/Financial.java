@@ -1,10 +1,16 @@
 package com.a404dalmations.superstudentscheduler;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.TextView;
+
 /**
  * Created by jonathan on 4/8/17.
  */
 
-public class Financial {
+public class Financial extends Activity
+{
 
     private float currentBalance;
     private float rentPerMonth;
@@ -205,4 +211,28 @@ public class Financial {
         }
         else return false;
     }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //--- text view---
+        TextView CB = (TextView) findViewById(R.id.CB);
+        TextView Rent = (TextView) findViewById(R.id.Rent);
+        TextView Utility = (TextView) findViewById(R.id.Utility);
+        TextView PayperH = (TextView) findViewById(R.id.PayperH);
+        TextView DaysWorked = (TextView) findViewById(R.id.DaysWorked);
+
+        
+
+    }
+
+    public static void main(String[] args) {
+
+
+    }
+
+
 }
