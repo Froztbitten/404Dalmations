@@ -1,161 +1,68 @@
 package com.a404dalmations.superstudentscheduler;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 /**
  * Created by jonathan on 4/9/17.
  */
 
 public class FinancialStart extends Activity {
-
-    private float currentBalance;
-    private float rentPerMonth;
-    private float utilitiesSum;
-    private float priviousMonthUtilities;
-    private float payPerHour;
-    private int hoursWorkPerWeek;
-    //4.34524=weeks per mounth
-    private float spendingMoniez;
-    public boolean hasFoodBeenCalculated;
-
-
-    public FinancialStart(float currentBalance, float rentPerMonth, float utilitiesSum, float priviousMonthUtilities, float payPerHour, int hoursWorkPerWeek, float spendingMoniez) {
-        this.currentBalance = currentBalance;
-        this.rentPerMonth = rentPerMonth;
-        this.utilitiesSum = utilitiesSum;
-        this.priviousMonthUtilities = priviousMonthUtilities;
-        this.payPerHour = payPerHour;
-        this.hoursWorkPerWeek = hoursWorkPerWeek;
-        this.spendingMoniez = spendingMoniez;
-    }
-
-    public float getSpendingMoniez() {
-        return spendingMoniez;
-    }
-
-    public void setSpendingMoniez(float spendingMoniez) {
-        this.spendingMoniez = spendingMoniez;
-    }
-
-    public float getCurrentBalance() {
-        return currentBalance;
-    }
-
-    public void setCurrentBalance(float currentBalance) {
-        this.currentBalance = currentBalance;
-    }
-
-    public float getRentPerMonth() {
-        return rentPerMonth;
-    }
-
-    public void setRentPerMonth(float rentPerMonth) {
-        this.rentPerMonth = rentPerMonth;
-    }
-
-    public float getUtilitiesSum() {
-        return utilitiesSum;
-    }
-
-    public void setUtilitiesSum(float utilitiesSum) {
-        this.utilitiesSum = utilitiesSum;
-    }
-
-    public float getPriviousMonthUtilities() {
-        return priviousMonthUtilities;
-    }
-
-    public void setPriviousMonthUtilities(float priviousMonthUtilities) {
-        this.priviousMonthUtilities = priviousMonthUtilities;
-    }
-
-    public float getPayPerHour() {
-        return payPerHour;
-    }
-
-    public void setPayPerHour(float payPerHour) {
-        this.payPerHour = payPerHour;
-    }
-
-    public int getHoursWorkPerWeek() {
-        return hoursWorkPerWeek;
-    }
-
-    public void setHoursWorkPerWeek(int hoursWorkPerWeek) {
-        this.hoursWorkPerWeek = hoursWorkPerWeek;
-    }
-
-
-    public void amountCanSpend()
-    {
-        //see if the user wants to incorperate there total savings into how mutch they can spend in a week
-        boolean userIntegatedSavings=false;
-
-        //this is how much you can afford in a week not a mounth
-        float expensesTotal;
-        float utilTotal=0;
-        int num=0;
-        //you need some way of asking  for previous utility bills so we can get the average
-        utilTotal=getUtilitiesSum();
-        //getis the adverage amount spent on utilities per month
-        utilTotal/=4.34524;
-        setUtilitiesSum(utilTotal);
-        //get the users rent per month
-        setRentPerMonth(405);
-
-
-        expensesTotal=getRentPerMonth()+getUtilitiesSum();
-
-        //get user input for there hourly pay
-        //setPayPerHour(10);
-        // setHoursWorkPerWeek(20);
-
-        float plusemonisz=getHoursWorkPerWeek()*getPayPerHour();
-        float avalibleFunds=0;
-
-        if(userIntegatedSavings==true)
-        {
-            avalibleFunds=(getCurrentBalance()+plusemonisz)-expensesTotal;
-        }
-        else
-        {
-            avalibleFunds=plusemonisz-expensesTotal;
-        }
-
-
-        setSpendingMoniez(avalibleFunds);
-
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.financial_menu);
 
         //--- text view---
         setTitle("Can I get Some Information?");
-        EditText CB = (EditText) findViewById(R.id.CB);
+    }
+
+    public void financialStatement(View view){
+        EditText cb = (EditText) findViewById(R.id.CB);
         EditText Rent = (EditText) findViewById(R.id.Rent);
         EditText Utility = (EditText) findViewById(R.id.Utility);
         EditText PayperH = (EditText) findViewById(R.id.PayperH);
         EditText DaysWorked = (EditText) findViewById(R.id.DaysWorked);
 
+        if(cb.getText().length() == 0){
+            Toast.makeText(this, "Please enter a current balance.", Toast.LENGTH_SHORT).show();
+        } else if (Rent.getText().toString().trim().length() == 0)
+        {
+            Toast.makeText(this, "Please enter a rent per month.", Toast.LENGTH_SHORT).show();
+        } else if (Utility.getText().toString().trim().length() == 0){
+            Toast.makeText(this, "Please enter a utility cost per month.", Toast.LENGTH_SHORT).show();
+        } else if (PayperH.getText().toString().trim().length() == 0){
+            Toast.makeText(this, "Please enter your income per hour.", Toast.LENGTH_SHORT).show();
+        } else if(DaysWorked.getText().toString().trim().length() == 0){
+            Toast.makeText(this, "Please enter hours worked per week.", Toast.LENGTH_SHORT).show();
+        } else{
+            float bal = Float.parseFloat(cb.getText().toString());
+            float r = Float.parseFloat(Rent.getText().toString());
+            float util = Float.parseFloat(Utility.getText().toString());
+            float h = Float.parseFloat(PayperH.getText().toString());
+            int days = Integer.parseInt(DaysWorked.getText().toString());
 
-        String bal =CB.getText().toString();
-        String r =Rent.getText().toString();
-        String util = Utility.getText().toString();
-        String h = PayperH.getText().toString();
-        String days = DaysWorked.getText().toString();
+            Finances fin = new Finances(bal, r, util, h, days);
+            Gson gson = new Gson();
+            String json = getSharedPreferences("name", Context.MODE_PRIVATE).getString("Person", "");
+            Person person = gson.fromJson(json, Person.class);
 
-        setCurrentBalance(Float.parseFloat(bal));
-        setRentPerMonth(Float.parseFloat(r));
-        setUtilitiesSum(Float.parseFloat(util));
-        setPayPerHour(Integer.parseInt(h));
-        setHoursWorkPerWeek(Integer.parseInt(days));
+            person.setFinances(fin);
 
+            SharedPreferences.Editor editor = getSharedPreferences("name", Context.MODE_PRIVATE).edit();
+            json = gson.toJson(person);
+            editor.putString("Person", json);
+            editor.apply();
+
+
+        }
     }
 
 }
