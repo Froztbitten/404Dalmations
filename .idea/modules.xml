@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/404Dalmation.iml" filepath="$PROJECT_DIR$/404Dalmation.iml" />
       <module fileurl="file://$PROJECT_DIR$/SuperStudentScheduler.iml" filepath="$PROJECT_DIR$/SuperStudentScheduler.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
