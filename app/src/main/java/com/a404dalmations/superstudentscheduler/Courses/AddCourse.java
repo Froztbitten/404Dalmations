@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -61,6 +62,31 @@ public class AddCourse extends AppCompatActivity
             Course course = new Course(((EditText) findViewById(R.id.nameField)).getText().toString(), Double.parseDouble(((EditText) findViewById(R.id.creditsField)).getText().toString()),
                     Double.parseDouble(((EditText) findViewById(R.id.gpaField)).getText().toString()), new ArrayList<Character>(), new Time(start.getCurrentHour(),
                     start.getCurrentMinute()), new Time(end.getCurrentHour(), end.getCurrentMinute()));
+            // Checkbox stuff:
+            final CheckBox monCheckBox = (CheckBox) findViewById(R.id.monCheckBox);
+            final CheckBox tuesCheckBox = (CheckBox) findViewById(R.id.tuesCheckBox);
+            final CheckBox wednesCheckBox = (CheckBox) findViewById(R.id.wednesCheckBox);
+            final CheckBox thursCheckBox = (CheckBox) findViewById(R.id.thursCheckBox);
+            final CheckBox friCheckBox = (CheckBox) findViewById(R.id.friCheckBox);
+
+            // Array list to hold the days
+            ArrayList<Character> days = new ArrayList<>();
+
+            if(monCheckBox.isChecked())
+                days.add('m');
+            if(tuesCheckBox.isChecked())
+                days.add('t');
+            if(wednesCheckBox.isChecked())
+                days.add('w');
+            if(thursCheckBox.isChecked())
+                days.add('r');
+            if(friCheckBox.isChecked())
+                days.add('f');
+
+            course.setDays(days);   // Set the days in the course.
+
+
+
 
             //Save sharedPref Person
             SharedPreferences.Editor editor = sharedPref.edit();
