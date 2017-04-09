@@ -33,7 +33,6 @@ public class AddCourse extends AppCompatActivity
         setContentView(R.layout.add_course);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     public void addCourse(View view){
         if(((EditText) findViewById(R.id.nameField)).getText().toString().trim().length() == 0){
             Toast.makeText(this, "Please enter a course name", Toast.LENGTH_SHORT).show();
@@ -96,7 +95,7 @@ public class AddCourse extends AppCompatActivity
             person.getHistory().setSemesters(sem);
             json = gson.toJson(person);
             editor.putString("Person", json);
-            editor.commit();
+            editor.apply();
 
             startActivity(new Intent(this, ScheduleActivity.class));
         }

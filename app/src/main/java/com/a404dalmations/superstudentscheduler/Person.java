@@ -12,10 +12,12 @@ public class Person
 {
     private String name;
     private History hist;
+    private Finances finances;
 
     public Person(String name){
         this.name = name;
         this.hist = new History();
+        this.finances = new Finances();
     }
 
     public String getName(){
@@ -28,5 +30,13 @@ public class Person
 
     public History getHistory(){
         return hist;
+    }
+
+    public void setFinances(Finances finances){
+        this.finances = finances;
+    }
+
+    public Finances getFinances() {
+        return finances;
     }
 }
