@@ -53,4 +53,8 @@ public class MenuActivity extends AppCompatActivity
     public void finances(View view){
         startActivity(new Intent(this, FinancialStart.class));
     }
+
+    public void dropCourse(View view){
+        startActivity(new Intent(this, RemoveCourseActivity.class));
+    }
 }
