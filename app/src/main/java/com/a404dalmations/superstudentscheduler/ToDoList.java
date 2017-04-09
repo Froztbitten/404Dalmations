@@ -53,4 +53,12 @@ public class ToDoList
             if (this.tasks.get(i) == task)
                 tasks.get(i).setInactive();
     }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    public void addTask(Task task){
+        this.tasks.add(task);
+    }
 }

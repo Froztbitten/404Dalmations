@@ -1,18 +1,14 @@
 package com.a404dalmations.superstudentscheduler;
 
-import java.util.Date;
-
 public class Task
 {
     private String taskName;
-    private Date dueDate;
     private String course;
     private boolean urgent;
     private boolean isActive;
 
-    public Task(String taskName, Date dueDate, String course, boolean urgent) {
+    public Task(String taskName, String course, boolean urgent) {
         this.taskName = taskName;
-        this.dueDate = dueDate;
         this.course = course;
         this.urgent = urgent;
         this.isActive = true;
@@ -20,10 +16,6 @@ public class Task
 
     public String getTaskName() {
         return taskName;
-    }
-
-    public Date getDueDate() {
-        return dueDate;
     }
 
     public String getCourse() {
