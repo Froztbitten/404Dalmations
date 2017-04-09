@@ -14,27 +14,27 @@ public class Course
     private int length;
 
     // Constructor for a current course:
-    public Course(double credits, String name, ArrayList<Character> days, Time startTime, Time endTime, int length)
+    public Course(String name, double credits, ArrayList<Character> days, Time startTime, Time endTime)
     {
         this.credits = credits;
         this.name = name;
         this.days = days;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.length = length;
+        this.length = this.calcLength();
         this.GPA = -9999999;
         this.current = false;
     }
 
     // Constructor for a passed course:
-    public Course(double GPA, double credits, String name, ArrayList<Character> days, Time startTime, Time endTime, int length) {
+    public Course(String name, double credits, double GPA, ArrayList<Character> days, Time startTime, Time endTime) {
         this.GPA = GPA;
         this.credits = credits;
         this.name = name;
         this.days = days;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.length = length;
+        this.length = this.calcLength();
         this.current = false;
     }
 
