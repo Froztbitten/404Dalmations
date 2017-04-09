@@ -31,15 +31,15 @@ public class Financial extends AppCompatActivity
         TextView Canafford = (TextView) findViewById(R.id.Canafford);
        // Button submitS=(Button) findViewById(R.id.SubmitS);
 
+        if(SP.getText()!=null) {
+            Gson gson = new Gson();
+            String json = getSharedPreferences("name", Context.MODE_PRIVATE).getString("Person", "");
+            Person person = gson.fromJson(json, Person.class);
+            SpendMoney.setText((int) ((int) person.getFinances().getSpendingMoniez() - Float.parseFloat(SP.getText().toString())));
 
-        Gson gson = new Gson();
-        String json = getSharedPreferences("name", Context.MODE_PRIVATE).getString("Person", "");
-        Person person = gson.fromJson(json, Person.class);
-        SpendMoney.setText((int) ((int) person.getFinances().getSpendingMoniez()-Float.parseFloat(SP.getText().toString())));
-
-        if(((int) ((int) person.getFinances().getSpendingMoniez()-Float.parseFloat(SP.getText().toString())))<0)
-        {
-            Canafford.setText("You cannot afford to buy this item");
+            if (((int) ((int) person.getFinances().getSpendingMoniez() - Float.parseFloat(SP.getText().toString()))) < 0) {
+                Canafford.setText("You cannot afford to buy this item");
+            }
         }
 
 
