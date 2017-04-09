@@ -5,10 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-/**
- * Created by Jacob on 4/9/2017.
- */
-
 public class RemoveSemesterActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState)
