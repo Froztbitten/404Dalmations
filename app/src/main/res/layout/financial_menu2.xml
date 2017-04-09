@@ -16,7 +16,7 @@
             android:layout_marginLeft="78dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="Stuff Price"
+            android:text="0"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="16dp" />
 
