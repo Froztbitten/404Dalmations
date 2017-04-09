@@ -31,7 +31,7 @@ public class Financial extends AppCompatActivity
         TextView Canafford = (TextView) findViewById(R.id.Canafford);
        // Button submitS=(Button) findViewById(R.id.SubmitS);
 
-
+        SP.setText("0");
         Gson gson = new Gson();
         String json = getSharedPreferences("name", Context.MODE_PRIVATE).getString("Person", "");
         Person person = gson.fromJson(json, Person.class);
