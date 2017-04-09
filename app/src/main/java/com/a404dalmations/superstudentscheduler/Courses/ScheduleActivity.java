@@ -37,7 +37,7 @@ public class ScheduleActivity extends AppCompatActivity
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
         for(Course i: semesters.get(semesters.size() - 1).getCourses()){
             TextView textView = new TextView(this);
-            textView.setText(i.getName());
+            textView.setText(i.getName() + " " + i.getDays() + " " + i.getStartTime().getHours() + ":" + i.getStartTime().getMinutes());
             linearLayout.addView(textView);
         }
     }
