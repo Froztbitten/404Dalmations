@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, AccountActivity.class);
             intent.putExtra("PERSON_NAME", person.getName());
             startActivity(intent);
+            finish();
         }
     }
 
@@ -60,5 +61,6 @@ public class MainActivity extends AppCompatActivity
         String name = editText.getText().toString();
         intent.putExtra("PERSON_NAME", name);
         startActivity(intent);
+        finish();
     }
 }

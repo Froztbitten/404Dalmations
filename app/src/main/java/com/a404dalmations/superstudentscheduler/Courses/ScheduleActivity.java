@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
@@ -44,8 +47,35 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
         listView.setAdapter(new Adapter(this, semesters.get(semesters.size() - 1).getCourses()));
     }
 
-    public void addCourse(View view){
-        startActivity(new Intent(this, AddCourse.class));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_courses, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.addCourse) {
+            startActivity(new Intent(this, AddCourse.class));
+            return true;
+        }
+        else if(id == R.id.filter) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.searchFilter);
+            if(layout.getVisibility() == View.GONE){
+                layout.setVisibility(View.VISIBLE);
+            }
+            else
+                layout.setVisibility(View.GONE);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
