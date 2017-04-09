@@ -20,7 +20,7 @@ public class AddTaskActivity extends AppCompatActivity
         protected void onCreate(Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState); // Not sure if this should be here or not but whatevs.
-            setContentView(R.layout.remove_course);
+            setContentView(R.layout.add_task);
 
             SharedPreferences sharedPref = getSharedPreferences("name", Context.MODE_PRIVATE);
             Gson gson = new Gson();
@@ -29,11 +29,11 @@ public class AddTaskActivity extends AppCompatActivity
             Person person = gson.fromJson(json, Person.class);
             History history = person.getHistory();
 
-            int count = history.getSemesters().get(history.getSemesterCount() - 1).getCourses().size();
+            int count = history.getSemesters().get(history.getSemesters().size() - 1).getCourses().size();
             ArrayList<String> courses = new ArrayList<>();
 
             for(int j = 0; j < count; j++)
-                courses.add(history.getSemesters().get(history.getSemesterCount() - 1).getCourses().get(j).getName());
+                courses.add(history.getSemesters().get(history.getSemesters().size() - 1).getCourses().get(j).getName());
 
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, courses);
 

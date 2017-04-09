@@ -31,7 +31,7 @@ public class RemoveCourseActivity extends AppCompatActivity{
         Person person = gson.fromJson(json, Person.class);
         History history = person.getHistory();
 
-        int count = history.getSemesterCount();
+        int count = history.getSemesters().size();
 
         ArrayList<Integer> nums = new ArrayList<>();
 

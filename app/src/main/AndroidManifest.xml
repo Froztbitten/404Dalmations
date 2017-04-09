@@ -31,5 +31,6 @@
         <activity android:name=".Financial"
                   android:parentActivityName=".FinancialStart"/>
         <activity android:name=".RemoveCourseActivity"/>
+        <activity android:name=".AddTaskActivity"/>
     </application>
 </manifest>

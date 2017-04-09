@@ -57,4 +57,8 @@ public class MenuActivity extends AppCompatActivity
     public void dropCourse(View view){
         startActivity(new Intent(this, RemoveCourseActivity.class));
     }
+
+    public void addTask(View view){
+        startActivity(new Intent(this, AddTaskActivity.class));
+    }
 }
