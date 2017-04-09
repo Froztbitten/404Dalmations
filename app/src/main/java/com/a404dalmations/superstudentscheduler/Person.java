@@ -2,6 +2,8 @@ package com.a404dalmations.superstudentscheduler;
 
 import com.a404dalmations.superstudentscheduler.Courses.History;
 
+import java.util.ArrayList;
+
 /**
  * Created by Devon on 4/8/2017.
  */
@@ -11,8 +13,9 @@ public class Person
     private String name;
     private History hist;
 
-    Person(String name){
+    public Person(String name){
         this.name = name;
+        this.hist = new History();
     }
 
     public String getName(){

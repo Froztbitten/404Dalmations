@@ -58,7 +58,7 @@ public class History
     public History()
     {
         this.semesterCount = 0;
-        this.semesters = new ArrayList<>();
+        this.semesters = new ArrayList<Semester>();
         this.overallGPA = 0.0;
     }
     public void addSemester(Semester semester)

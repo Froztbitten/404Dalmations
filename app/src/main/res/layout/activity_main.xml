@@ -6,23 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.a404dalmations.superstudentscheduler.MainActivity">
-    <Button
-        android:id="@+id/nav"
-        android:layout_height="51dp"
-        android:layout_width="108dp"
-        android:text="Continue"
-        android:onClick="triggered"
-        tools:layout_editor_absoluteX="100dp"
-        android:layout_marginTop="63dp"
-        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="78dp"
-        android:layout_height="59dp"
-        android:text="Hello,"
-        tools:layout_editor_absoluteX="115dp"
-        tools:text="asdasdsads"
-        android:layout_marginTop="45dp"
-        app:layout_constraintTop_toBottomOf="@+id/nav"/>
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:text="Hey, you're new here.\nWhat's your name dude?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:layout_editor_absoluteX="0dp"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Confirm"
+        android:onClick="confirm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        android:layout_marginLeft="119dp"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 </android.support.constraint.ConstraintLayout>

@@ -11,7 +11,7 @@ public class Semester {
     private boolean current;
 
     public Semester(int semesterNum, Date startDate, Date endDate) {
-        this.courses = new ArrayList<>();
+        this.courses = new ArrayList<Course>();
         this.semesterNum = semesterNum;
         this.startDate = startDate;
         this.endDate = endDate;
