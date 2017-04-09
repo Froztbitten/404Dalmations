@@ -24,14 +24,23 @@ public class AccountActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        //New Person
-        Person person = new Person(getIntent().getExtras().getString("PERSON_NAME"));
-        person.getHistory().getSemesters().add(new Semester(0, new Date(), new Date()));
-        Gson gson = new Gson();
+        String json = getSharedPreferences("name", Context.MODE_PRIVATE).getString("Person", "");
         SharedPreferences.Editor editor = getSharedPreferences("name", Context.MODE_PRIVATE).edit();
-        String json = gson.toJson(person);
-        editor.putString("Person", json);
-        editor.commit();
+        Gson gson = new Gson();
+        Person person;
+        if(json.equals(""))
+        {
+            person = new Person(getIntent().getExtras().getString("PERSON_NAME"));
+            person.getHistory().getSemesters().add(new Semester(0, new Date(), new Date()));
+            json = gson.toJson(person);
+            editor.putString("Person", json);
+            editor.apply();
+        }
+        else{
+            person = gson.fromJson(json, Person.class);
+        }
+
+
 
         TextView tv = (TextView) findViewById(R.id.textView);
         String editable = tv.getText().toString();
