@@ -30,6 +30,7 @@ public class FinancialStart extends Activity {
         EditText Utility = (EditText) findViewById(R.id.Utility);
         EditText PayperH = (EditText) findViewById(R.id.PayperH);
         EditText DaysWorked = (EditText) findViewById(R.id.DaysWorked);
+        EditText Food = (EditText) findViewById(R.id.Food);
 
         if(cb.getText().length() == 0){
             Toast.makeText(this, "Please enter a current balance.", Toast.LENGTH_SHORT).show();
@@ -42,14 +43,17 @@ public class FinancialStart extends Activity {
             Toast.makeText(this, "Please enter your income per hour.", Toast.LENGTH_SHORT).show();
         } else if(DaysWorked.getText().toString().trim().length() == 0){
             Toast.makeText(this, "Please enter hours worked per week.", Toast.LENGTH_SHORT).show();
+        }else if(Food.getText().toString().trim().length() == 0){
+            Toast.makeText(this, "Please enter you weekly food costs.", Toast.LENGTH_SHORT).show();
         } else{
             float bal = Float.parseFloat(cb.getText().toString());
             float r = Float.parseFloat(Rent.getText().toString());
             float util = Float.parseFloat(Utility.getText().toString());
             float h = Float.parseFloat(PayperH.getText().toString());
             int days = Integer.parseInt(DaysWorked.getText().toString());
+            float food=Float.parseFloat(Food.getText().toString());
 
-            Finances fin = new Finances(bal, r, util, h, days);
+            Finances fin = new Finances(bal, r, util, h, days,food);
             Gson gson = new Gson();
             String json = getSharedPreferences("name", Context.MODE_PRIVATE).getString("Person", "");
             Person person = gson.fromJson(json, Person.class);
