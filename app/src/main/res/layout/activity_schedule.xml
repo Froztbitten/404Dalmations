@@ -5,15 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/searchFilter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#bfbfbf">
 
-
-
-    </RelativeLayout>
     <ListView android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/listView"

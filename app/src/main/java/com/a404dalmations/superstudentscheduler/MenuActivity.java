@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.a404dalmations.superstudentscheduler.Courses.AddCourse;
 import com.a404dalmations.superstudentscheduler.Courses.ScheduleActivity;
+import com.a404dalmations.superstudentscheduler.Courses.Semester;
 
 /**
  * Created by Devon on 4/8/2017.
@@ -47,7 +48,7 @@ public class MenuActivity extends AppCompatActivity
     }
 
     public void schedule(View view){
-        startActivity(new Intent(this, ScheduleActivity.class));
+        startActivity(new Intent(this, SemesterActivity.class));
     }
 
     public void finances(View view){

@@ -90,7 +90,7 @@ public class AddCourse extends AppCompatActivity
             //Save sharedPref Person
             SharedPreferences.Editor editor = sharedPref.edit();
             gson = new Gson();
-            sem.get(sem.size() - 1).getCourses().add(course);
+            sem.get(getIntent().getIntExtra("row", 0)).getCourses().add(course);
             person.setHistory(new History());
             person.getHistory().setSemesters(sem);
             json = gson.toJson(person);

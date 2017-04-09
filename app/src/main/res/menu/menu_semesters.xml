@@ -3,8 +3,8 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.shavedandbearded.tomato.MainActivity">
     <item
-        android:id="@+id/addCourse"
+        android:id="@+id/addSemester"
         android:orderInCategory="100"
-        android:title="Add Course"
+        android:title="Add Semester"
         app:showAsAction="ifRoom" />
 </menu>

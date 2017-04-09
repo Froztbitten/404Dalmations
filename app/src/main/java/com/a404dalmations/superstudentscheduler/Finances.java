@@ -15,17 +15,27 @@ public class Finances
     //4.34524=weeks per mounth
     private float spendingMoniez;
     public boolean hasFoodBeenCalculated;
+    private float food;
 
     public Finances(){
 
     }
 
-    public Finances(float currentBalance, float rentPerMonth, float utilitiesSum, float payPerHour, int hoursWorkPerWeek) {
+    public Finances(float currentBalance, float rentPerMonth, float utilitiesSum, float payPerHour, int hoursWorkPerWeek,float food) {
         this.currentBalance = currentBalance;
         this.rentPerMonth = rentPerMonth;
         this.utilitiesSum = utilitiesSum;
         this.payPerHour = payPerHour;
         this.hoursWorkPerWeek = hoursWorkPerWeek;
+        this.food=food;
+    }
+
+    public float getFood() {
+        return food;
+    }
+
+    public void setFood(float food) {
+        this.food = food;
     }
 
     public float getSpendingMoniez() {
@@ -103,7 +113,7 @@ public class Finances
         setRentPerMonth(405);
 
 
-        expensesTotal=getRentPerMonth()+getUtilitiesSum();
+        expensesTotal=getRentPerMonth()+getUtilitiesSum()+getFood();
 
         //get user input for there hourly pay
         //setPayPerHour(10);
@@ -111,6 +121,7 @@ public class Finances
 
         float plusemonisz=getHoursWorkPerWeek()*getPayPerHour();
         float avalibleFunds=0;
+
 
         if(userIntegatedSavings==true)
         {
