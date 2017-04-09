@@ -210,15 +210,4 @@ public class Financial {
         }
         else return false;
     }
-
-
-
-
-    public static void main(String[] args) {
-
-    }
-
-
-
-
 }
