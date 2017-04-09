@@ -18,20 +18,16 @@ public class Financial extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.financial_menu2);
 
         //--- text view---
-        setTitle("Can I get Some Information?");
         EditText SP = (EditText) findViewById(R.id.SP);
         EditText FP = (EditText) findViewById(R.id.FP);
         TextView AffordF = (TextView) findViewById(R.id.AffordF);
         TextView AffordS = (TextView) findViewById(R.id.AffordS);
 
-
-
-        String s =SP.getText().toString();
-        String f = FP.getText().toString();
-
+        //String s =SP.getText().toString();
+        //String f = FP.getText().toString();
 
         /*
         if(canYouAffordFood(Float.parseFloat(f)))
