@@ -94,12 +94,7 @@ public class Financial {
         float utilTotal=0;
         int num=0;
         //you need some way of asking  for previous utility bills so we can get the average
-        while(priviousMonthUtilities!=-1)
-        {
-            utilTotal+=priviousMonthUtilities+utilTotal;
-            num++;
-        }
-        utilTotal/=num;
+        utilTotal=getUtilitiesSum();
         //getis the adverage amount spent on utilities per month
         utilTotal/=4.34524;
         setUtilitiesSum(utilTotal);
