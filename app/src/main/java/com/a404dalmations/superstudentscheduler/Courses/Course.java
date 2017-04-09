@@ -12,9 +12,10 @@ public class Course
     private Time startTime;
     private Time endTime;
     private int length;
+    private String location;
 
     // Constructor for a current course:
-    public Course(double credits, String name, ArrayList<Character> days, Time startTime, Time endTime, int length)
+    public Course(double credits, String name, ArrayList<Character> days, Time startTime, Time endTime, int length, String location)
     {
         this.credits = credits;
         this.name = name;
@@ -24,6 +25,7 @@ public class Course
         this.length = length;
         this.GPA = -9999999;
         this.current = false;
+        this.location = location;
     }
 
     // Constructor for a passed course:
@@ -115,5 +117,11 @@ public class Course
         this.current = current;
     }
 
-    // Remember old course class and semester class.
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }
