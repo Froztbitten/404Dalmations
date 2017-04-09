@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 public class MainActivity extends AppCompatActivity
 {
     @Override
@@ -22,7 +24,11 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences sharedPreferences = getSharedPreferences("name", Context.MODE_PRIVATE);
         String json = sharedPreferences.getString("Person", "");
         if(!json.equals("")){
-            startActivity(new Intent(this, AccountActivity.class));
+            Gson gson = new Gson();
+            Person person = gson.fromJson(json, Person.class);
+            Intent intent = new Intent(this, AccountActivity.class);
+            intent.putExtra("PERSON_NAME", person.getName());
+            startActivity(intent);
         }
     }
 
