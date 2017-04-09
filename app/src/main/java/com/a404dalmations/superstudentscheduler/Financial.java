@@ -29,7 +29,7 @@ public class Financial extends AppCompatActivity
         EditText SP = (EditText) findViewById(R.id.SP);
         TextView SpendMoney = (TextView) findViewById(R.id.SpendMoney);
         TextView Canafford = (TextView) findViewById(R.id.Canafford);
-        Button submitS=(Button) findViewById(R.id.SubmitS);
+       // Button submitS=(Button) findViewById(R.id.SubmitS);
 
 
         Gson gson = new Gson();
@@ -37,6 +37,10 @@ public class Financial extends AppCompatActivity
         Person person = gson.fromJson(json, Person.class);
         SpendMoney.setText((int) ((int) person.getFinances().getSpendingMoniez()-Float.parseFloat(SP.getText().toString())));
 
+        if(((int) ((int) person.getFinances().getSpendingMoniez()-Float.parseFloat(SP.getText().toString())))<0)
+        {
+            Canafford.setText("You cannot afford to buy this item");
+        }
 
 
 
