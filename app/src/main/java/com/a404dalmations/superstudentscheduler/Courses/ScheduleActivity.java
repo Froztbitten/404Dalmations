@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a404dalmations.superstudentscheduler.Adapter;
 import com.a404dalmations.superstudentscheduler.Person;
@@ -44,7 +45,10 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
         ArrayList<Semester> semesters = person.getHistory().getSemesters();
 
         ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(new Adapter(this, semesters.get(semesters.size() - 1).getCourses()));
+        int row = getIntent().getIntExtra("semester", 0);
+        listView.setAdapter(new Adapter(this, semesters.get(row).getCourses()));
+
+
     }
 
     @Override
@@ -63,16 +67,9 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.addCourse) {
-            startActivity(new Intent(this, AddCourse.class));
-            return true;
-        }
-        else if(id == R.id.filter) {
-            RelativeLayout layout = (RelativeLayout) findViewById(R.id.searchFilter);
-            if(layout.getVisibility() == View.GONE){
-                layout.setVisibility(View.VISIBLE);
-            }
-            else
-                layout.setVisibility(View.GONE);
+            Intent intent = new Intent(this, AddCourse.class);
+            intent.putExtra("row", getIntent().getIntExtra("semester", 0));
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

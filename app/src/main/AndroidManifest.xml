@@ -15,20 +15,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AccountActivity">
-        </activity>
-        <activity android:name=".MenuActivity">
-        </activity>
-        <activity android:name=".Courses.ScheduleActivity"
+        <activity android:name=".AccountActivity"/>
+        <activity android:name=".MenuActivity"/>
+        <activity android:name=".SemesterActivity"
                   android:label="Schedule"
                   android:parentActivityName=".MenuActivity"/>
+        <activity android:name=".Courses.ScheduleActivity"
+                  android:label="Schedule"
+                  android:parentActivityName=".SemesterActivity"/>
         <activity android:name=".Courses.AddCourse"
-                  android:label="Add a Course"
+                  android:label="Add Course"
             android:parentActivityName=".Courses.ScheduleActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".FinancialStart"
+                  android:label="Finances"
                   android:parentActivityName=".MenuActivity"/>
         <activity android:name=".Financial"
+                  android:label="Finances"
                   android:parentActivityName=".FinancialStart"/>
         <activity android:name=".RemoveCourseActivity"/>
     </application>
