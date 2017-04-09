@@ -33,7 +33,8 @@
         <activity android:name=".Financial"
                   android:label="Finances"
                   android:parentActivityName=".FinancialStart"/>
-        <activity android:name=".RemoveCourseActivity"/>
+        <activity android:name=".RemoveCourseActivity"
+            android:parentActivityName=".MenuActivity"/>
         <activity android:name=".AddTaskActivity"/>
     </application>
 </manifest>

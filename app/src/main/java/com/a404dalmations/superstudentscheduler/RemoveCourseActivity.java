@@ -108,6 +108,7 @@ public class RemoveCourseActivity extends AppCompatActivity{
         editor.putString("Person", json);
         editor.apply();
 
-        startActivity(new Intent(this, ScheduleActivity.class));
+        finish();
+        startActivity(getIntent());
     }
 }

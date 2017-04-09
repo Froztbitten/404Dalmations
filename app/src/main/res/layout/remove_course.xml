@@ -6,7 +6,7 @@
     <Spinner
         android:id="@+id/semesterSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"/>
 
     <Button
         android:id="@+id/selectButton"
@@ -19,7 +19,7 @@
     <Spinner
         android:id="@+id/courseSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp"/>
 
     <Button
         android:id="@+id/removeButton"
