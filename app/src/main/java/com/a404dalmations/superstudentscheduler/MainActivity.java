@@ -12,7 +12,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(this, AccountActivity.class));
+        if(getSharedPreferences("Person", MODE_PRIVATE)!=null)
+            startActivity(new Intent(this, AccountActivity.class));
+        else{
+
+        }
     }
     public void triggered(View view){
         startActivity(new Intent(this, AccountActivity.class));
