@@ -3,139 +3,67 @@ package com.a404dalmations.superstudentscheduler;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
  * Created by jonathan on 4/8/17.
  */
 
-public class Financial extends Activity
+public class Financial extends FinancialStart
 {
-
-    private float currentBalance;
-    private float rentPerMonth;
-    private float utilitiesSum;
-    private float priviousMonthUtilities;
-    private float payPerHour;
-    private int hoursWorkPerWeek;
-    //4.34524=weeks per mounth
-    private float spendingMoniez;
-    public boolean hasFoodBeenCalculated;
-
-
     public Financial(float currentBalance, float rentPerMonth, float utilitiesSum, float priviousMonthUtilities, float payPerHour, int hoursWorkPerWeek, float spendingMoniez) {
-        this.currentBalance = currentBalance;
-        this.rentPerMonth = rentPerMonth;
-        this.utilitiesSum = utilitiesSum;
-        this.priviousMonthUtilities = priviousMonthUtilities;
-        this.payPerHour = payPerHour;
-        this.hoursWorkPerWeek = hoursWorkPerWeek;
-        this.spendingMoniez = spendingMoniez;
-    }
-
-    public float getSpendingMoniez() {
-        return spendingMoniez;
-    }
-
-    public void setSpendingMoniez(float spendingMoniez) {
-        this.spendingMoniez = spendingMoniez;
-    }
-
-    public float getCurrentBalance() {
-        return currentBalance;
-    }
-
-    public void setCurrentBalance(float currentBalance) {
-        this.currentBalance = currentBalance;
-    }
-
-    public float getRentPerMonth() {
-        return rentPerMonth;
-    }
-
-    public void setRentPerMonth(float rentPerMonth) {
-        this.rentPerMonth = rentPerMonth;
-    }
-
-    public float getUtilitiesSum() {
-        return utilitiesSum;
-    }
-
-    public void setUtilitiesSum(float utilitiesSum) {
-        this.utilitiesSum = utilitiesSum;
-    }
-
-    public float getPriviousMonthUtilities() {
-        return priviousMonthUtilities;
-    }
-
-    public void setPriviousMonthUtilities(float priviousMonthUtilities) {
-        this.priviousMonthUtilities = priviousMonthUtilities;
-    }
-
-    public float getPayPerHour() {
-        return payPerHour;
-    }
-
-    public void setPayPerHour(float payPerHour) {
-        this.payPerHour = payPerHour;
-    }
-
-    public int getHoursWorkPerWeek() {
-        return hoursWorkPerWeek;
-    }
-
-    public void setHoursWorkPerWeek(int hoursWorkPerWeek) {
-        this.hoursWorkPerWeek = hoursWorkPerWeek;
+        super(currentBalance, rentPerMonth, utilitiesSum, priviousMonthUtilities, payPerHour, hoursWorkPerWeek, spendingMoniez);
     }
 
 
-    public void amountCanSpend()
-    {
-        //see if the user wants to incorperate there total savings into how mutch they can spend in a week
-        boolean userIntegatedSavings=false;
 
-        //this is how much you can afford in a week not a mounth
-        float expensesTotal;
-        float utilTotal=0;
-        int num=0;
-        //you need some way of asking  for previous utility bills so we can get the average
-        utilTotal=getUtilitiesSum();
-        //getis the adverage amount spent on utilities per month
-        utilTotal/=4.34524;
-        setUtilitiesSum(utilTotal);
-        //get the users rent per month
-       setRentPerMonth(405);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //--- text view---
+        setTitle("Can I get Some Information?");
+        EditText SP = (EditText) findViewById(R.id.SP);
+        EditText FP = (EditText) findViewById(R.id.FP);
+        TextView AffordF = (TextView) findViewById(R.id.AffordF);
+        TextView AffordS = (TextView) findViewById(R.id.AffordS);
 
 
-        expensesTotal=getRentPerMonth()+getUtilitiesSum();
 
-        //get user input for there hourly pay
-        setPayPerHour(10);
-        setHoursWorkPerWeek(20);
 
-        float plusemonisz=getHoursWorkPerWeek()*getPayPerHour();
-        float avalibleFunds=0;
+        String s =SP.getText().toString();
+        String f = FP.getText().toString();
 
-        if(userIntegatedSavings==true)
+        if(canYouAffordFood(Float.parseFloat(f)))
         {
-            avalibleFunds=(getCurrentBalance()+plusemonisz)-expensesTotal;
+            AffordF.setText("You can aford to eat on this budget");
         }
         else
         {
-            avalibleFunds=plusemonisz-expensesTotal;
+            AffordF.setText("You cannot affoerd to eat on this budget");
         }
 
-
-        setSpendingMoniez(avalibleFunds);
+        if( canYouAffordStuff(Float.parseFloat(s)))
+        {
+            AffordS.setText("You can afford to buy the thing");
+        }
+        else
+        {
+            AffordS.setText("You cannot get the thing");
+        }
 
     }
 
 
-    public boolean canYouAffordFood()
+
+    public boolean canYouAffordFood(float amountNeeds)
     {
         //get the users amount needs for foods
-        float amountNeeds=0;
+      //  float amountNeeds=0;
         if(getSpendingMoniez()<21)
         {
             return false;
@@ -171,14 +99,14 @@ public class Financial extends Activity
         }
     }
 
-    public boolean canYouAffordStuff()
+    public boolean canYouAffordStuff(float amountNeeds)
     {
         //how much is the thing
-        float amountNeeds=0;
+        //float amountNeeds=0;
         if(hasFoodBeenCalculated==false)
         {
             //no you cant afford food so you cant afford stuff
-            if(canYouAffordFood()==false)
+            //if(canYouAffordFood()==false)
             {
                 return false;
             }
@@ -211,28 +139,7 @@ public class Financial extends Activity
         }
         else return false;
     }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //--- text view---
-        TextView CB = (TextView) findViewById(R.id.CB);
-        TextView Rent = (TextView) findViewById(R.id.Rent);
-        TextView Utility = (TextView) findViewById(R.id.Utility);
-        TextView PayperH = (TextView) findViewById(R.id.PayperH);
-        TextView DaysWorked = (TextView) findViewById(R.id.DaysWorked);
-
-        
-
-    }
-
-    public static void main(String[] args) {
-
-
-    }
+    
 
 
 }

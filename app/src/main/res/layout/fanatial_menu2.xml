@@ -10,25 +10,25 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/SP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:text="Stuff Price"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/FP" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/FP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:text="Food Unit Price"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
             tools:layout_editor_absoluteY="59dp" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/AffordF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -60,7 +60,7 @@
             tools:layout_editor_absoluteY="248dp" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/AffordS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"

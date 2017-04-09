@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="numberDecimal"
         android:text="CurrentBalance"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_editor_absoluteY="1dp" />
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="numberDecimal"
         android:text="Rent/Month"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="49dp" />
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="numberDecimal"
         android:text="Average Utility Cost"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_editor_absoluteY="96dp" />
@@ -44,7 +44,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="numberDecimal"
         android:text="Pay per hour"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Utility" />
@@ -56,7 +56,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="6dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="numberDecimal"
         android:text="Days Worked Per Week"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PayperH" />
