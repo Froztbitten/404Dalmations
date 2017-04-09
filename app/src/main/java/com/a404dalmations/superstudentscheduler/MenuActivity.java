@@ -40,7 +40,7 @@ public class MenuActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            getSharedPreferences("name", Context.MODE_PRIVATE).edit().clear().commit();
+            getSharedPreferences("name", Context.MODE_PRIVATE).edit().clear().apply();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -48,5 +48,9 @@ public class MenuActivity extends AppCompatActivity
 
     public void schedule(View view){
         startActivity(new Intent(this, ScheduleActivity.class));
+    }
+
+    public void finances(View view){
+        startActivity(new Intent(this, FinancialStart.class));
     }
 }

@@ -24,5 +24,9 @@
         <activity android:name=".Courses.AddCourse"
             android:parentActivityName=".Courses.ScheduleActivity"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".FinancialStart"
+                  android:parentActivityName=".MenuActivity"/>
+        <activity android:name=".Financial"
+                  android:parentActivityName=".FinancialStart"/>
     </application>
 </manifest>
