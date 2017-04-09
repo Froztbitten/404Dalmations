@@ -41,7 +41,7 @@ public class RemoveCourseActivity  extends AppCompatActivity {
 
         int count = history.getSemesterCount();
         ArrayList<Integer> nums = new ArrayList<>();
-        for(int i = 1; i <= nums.size(); i++)
+        for(int i = 1; i <= count; i++)
             nums.add(i);
 
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nums);
@@ -50,21 +50,21 @@ public class RemoveCourseActivity  extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.semesterSpinner);
         sItems.setAdapter(adapter);
-
+        
         // Get the number of the semester that is selected.
         int selectedSemester = (int)sItems.getSelectedItem();
 
         count = history.getSemesters().get(selectedSemester - 1).getCourses().size();
         ArrayList<String> names = new ArrayList<>();
-        for(int i = 0; i < nums.size(); i++)
+        for(int i = 0; i < count; i++)
             names.add(history.getSemesters().get(selectedSemester - 1).getCourses().get(i).getName());
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
 
         // Add the values from the array list to the spinner.
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sItems = (Spinner) findViewById(R.id.semesterSpinner);
-        sItems.setAdapter(adapter);
+        sItems.setAdapter(adapter1);
 
         // Get the name of the selected semester from the spinner.
         String selectedCourse = sItems.getSelectedItem().toString();

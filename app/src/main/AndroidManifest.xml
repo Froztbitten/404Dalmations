@@ -28,5 +28,6 @@
                   android:parentActivityName=".MenuActivity"/>
         <activity android:name=".Financial"
                   android:parentActivityName=".FinancialStart"/>
+        <activity android:name=".RemoveCourseActivity"/>
     </application>
 </manifest>
