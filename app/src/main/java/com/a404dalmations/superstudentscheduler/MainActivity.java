@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity
 
         startActivity(new Intent(this, AccountActivity.class));
     }
-
     public void triggered(View view){
         startActivity(new Intent(this, AccountActivity.class));
     }
